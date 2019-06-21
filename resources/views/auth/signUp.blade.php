@@ -8,15 +8,18 @@
 <div class="container">
     <h1>{{ $title }}</h1>
 
+    <!--錯誤訊息模板 -->
+    @include('components.validationErrorMessage')
+
     <form action="/user/auth/sign-up" method="post">
         <label>
             暱稱:
-            <input type="text" name="nickname" placeholder="暱稱">
+            <input type="text" name="nickname" placeholder="暱稱" value="{{ old('nickname') }}">
         </label>
 
         <label>
             Email:
-            <input type="text" name="email" placeholder="Email">
+            <input type="text" name="email" placeholder="Email" value="{{ old('email') }}>
         </label>
 
         <label>
@@ -44,8 +47,3 @@
 
 @endsection
 
-
-暱稱:
-<input type="text" name="nickname" placeholder="暱稱">
-
-@endsection
