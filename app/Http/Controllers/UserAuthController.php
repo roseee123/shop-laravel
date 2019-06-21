@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers;
 use Validator;
+use Hash;
 
 class UserAuthController extends Controller
 {
@@ -62,5 +63,8 @@ class UserAuthController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
+
+        // 密碼加密
+        $input['password'] = Hash::make($input['password']);
     }
 }
