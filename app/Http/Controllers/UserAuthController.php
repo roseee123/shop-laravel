@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Validator;
 use Hash;
 use App\Shop\Entity\User;
@@ -70,5 +71,19 @@ class UserAuthController extends Controller
 
         //新增會員資料(Eloquent ORM Model)
         $Users = User::create($input);
+
+//        //寄送註冊通知新
+//        $mail_blinding = [
+//            'nickname' =>$input['nickname']
+//        ];
+//
+//        Mail::send('email.signUpEmailNotification', $mail_blinding, function ($mail) use ($input){
+//            $mail->to($input['email']);
+//            $mail->from('cat@gmail.com');
+//            $mail->subject('恭喜註冊 Shop Laravel 成功');
+//        });
+
+        //重新導向登入頁
+        return redirect('/user/auth/sign-in');
     }
 }
