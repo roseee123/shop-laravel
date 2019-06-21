@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 
-use App\Http\Controllers;
+use App\Http\Controllers\Controller;
 use Validator;
 use Hash;
+use App\Shop\Entity\User;
 
 class UserAuthController extends Controller
 {
@@ -66,5 +67,8 @@ class UserAuthController extends Controller
 
         // 密碼加密
         $input['password'] = Hash::make($input['password']);
+
+        //新增會員資料(Eloquent ORM Model)
+        $Users = User::create($input);
     }
 }

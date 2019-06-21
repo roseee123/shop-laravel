@@ -19,7 +19,7 @@
 
         <label>
             Email:
-            <input type="text" name="email" placeholder="Email" value="{{ old('email') }}>
+            <input type="text" name="email" placeholder="Email" value="{{ old('email') }}">
         </label>
 
         <label>
@@ -42,6 +42,7 @@
 
         <button type="submit">註冊</button>
 
+        {{ csrf_field() }}
     </form>
 </div>
 
