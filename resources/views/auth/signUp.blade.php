@@ -1,99 +1,51 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 繼承母模板 -->
+@extends('layout.master')
 
-        <title>Laravel</title>
+<!-- 傳資料到母模板,並指定變數 -->
+@section('title', $title)
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+@section('content')
+<div class="container">
+    <h1>{{ $title }}</h1>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+    <form action="/user/auth/sign-up" method="post">
+        <label>
+            暱稱:
+            <input type="text" name="nickname" placeholder="暱稱">
+        </label>
 
-            .full-height {
-                height: 100vh;
-            }
+        <label>
+            Email:
+            <input type="text" name="email" placeholder="Email">
+        </label>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+        <label>
+            密碼:
+            <input type="password" name="password" placeholder="密碼">
+        </label>
 
-            .position-ref {
-                position: relative;
-            }
+        <label>
+            密碼:
+            <input type="password" name="password_confirmation" placeholder="確認密碼">
+        </label>
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+        <label>
+            帳號類型:
+            <select name="type">
+                <option value="G">一般會員</option>
+                <option value="A">管理者</option>
+            </select>
+        </label>
 
-            .content {
-                text-align: center;
-            }
+        <button type="submit">註冊</button>
 
-            .title {
-                font-size: 84px;
-            }
+    </form>
+</div>
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+@endsection
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+暱稱:
+<input type="text" name="nickname" placeholder="暱稱">
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+@endsection
