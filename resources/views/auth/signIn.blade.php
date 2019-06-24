@@ -5,18 +5,26 @@
 @section('title', $title)
 
 @section('content')
-<h1>{{ $title }}</h1>
+<div class="container">
+    <h1>{{ $title }}</h1>
 
-<!--載入元件模板 -->
-@include('components.socialButtons')
+    <!--錯誤訊息模板 -->
+    @include('components.validationErrorMessage')
 
-Email:
-<input type="text" name="email" placeholder="Email">
+    <form action="/user/auth/sign-in" method="post">
+        <label>
+            Email:
+            <input type="text" name="email" placeholder="Email" value="{{ old('email') }}">
+        </label>
 
-密碼:
-<input type="password" name="password" placeholder="密碼">
+        <label>
+            密碼:
+            <input type="password" name="password" placeholder="密碼" value="{{ old('password') }}">
+        </label>
 
-暱稱:
-<input type="text" name="nickname" placeholder="暱稱">
+        <button type="submit">登入</button>
 
+        {{ csrf_field() }}
+    </form>
+</div>
 @endsection
