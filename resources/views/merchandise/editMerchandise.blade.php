@@ -50,7 +50,7 @@
         <label>
             商品照片:
             <input type="file" name="photo" placeholder="商品照片">
-            <img src="{{ $Merchandise->photo or '/assets/imges/default-merchandise.png }}">
+            <img src="{{ $Merchandise->photo or '/assets/imges/default-merchandise.png' }}">
         </label>
 
         <label>

@@ -30,7 +30,7 @@ Route::group(['prefix' => 'user'], function () {
 
 //商品
 Route::group(['prefix' => 'merchandise'], function () {
-    Route::get('/', 'MerchandiseController@merchandiseMangeListPage');
+    Route::get('/', 'MerchandiseController@merchandiseListPage');
     Route::get('/create', 'MerchandiseController@merchandiseCreateProcess')->middleware(['user.auth.admin']);
     Route::get('/manage', 'MerchandiseController@merchandiseManageListPage')->middleware(['user.auth.admin']);
     Route::group(['prefix' => '{merchandise_id}'], function () {
@@ -44,5 +44,5 @@ Route::group(['prefix' => 'merchandise'], function () {
 });
 
 //交易
-Route::get('/transaction', 'TransactionController@transactionListPage');
+Route::get('/transaction', 'TransactionController@transactionListPage')->middleware(['user.auth']);
 
