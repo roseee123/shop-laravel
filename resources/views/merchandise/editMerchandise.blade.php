@@ -13,17 +13,17 @@
 
     <form action="/merchandise/{{ $Merchandise->id }}" method="post" enctype="multipart/form-data">
 
-        {{ method_field('PUT'}}
+        {{ method_field('PUT') }}
 
         <label>
             商品狀態:
             <select name="status">
                 <option value="C"
                         @if(old('status', $Merchandise->status)=='C') select @endif
-                ></option>
+                >建立中</option>
                 <option value="S"
                         @if(old('status', $Merchandise->status)=='S') select @endif
-                ></option>
+                >可販售</option>
             </select>
         </label>
 

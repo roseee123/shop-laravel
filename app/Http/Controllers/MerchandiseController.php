@@ -9,6 +9,7 @@ use App\Shop\Entity\Transaction;
 use App\Shop\Entity\User;
 use DB;
 use Exception;
+use Image;
 
 class MerchandiseController extends Controller
 {
@@ -19,22 +20,20 @@ class MerchandiseController extends Controller
     //新增商品
     public function merchandiseCreateProcess() {
 
-        //建立商品基本資訊
+        // 建立商品基本資訊
         $merchandise_data = [
-            'status'          => 'C',//建立中
-            'name'            => '',
-            'name_en'         => '',
-            'introduction'    => '',
-            'introduction_en' =>'',
-            'photo'           => null,
-            'price'           => 0,
-            'remain_count'    =>0,
+            'status'          => 'C',   // 建立中
+            'name'            => '',    // 商品名稱
+            'name_en'         => '',    // 商品英文名稱
+            'introduction'    => '',    // 商品介紹
+            'introduction_en' => '',    // 商品英文介紹
+            'photo'           => null,  // 商品照片
+            'price'           => 0,     // 價格
+            'remain_count'    => 0,     // 商品剩餘數量
         ];
+        $Merchandise = Merchandise::create($merchandise_data);
 
-        $Merchandise = Merchandise::created($merchandise_data);
-
-
-        //重新導向登入頁
+        // 重新導向至商品編輯頁
         return redirect('/merchandise/' . $Merchandise->id . '/edit');
     }
 
@@ -143,7 +142,7 @@ class MerchandiseController extends Controller
 
     }
 
-    public function merchandiseMangeListPage()
+    public function merchandiseManageListPage()
     {
         // 每頁資料量
         $row_per_page = 10;
@@ -164,7 +163,7 @@ class MerchandiseController extends Controller
             'MerchandisePaginate'=> $MerchandisePaginate,
         ];
 
-        return view('merchandise.mangeMerchandise', $binding);
+        return view('merchandise.manageMerchandise', $binding);
     }
 
     public function merchandiseListPage()
